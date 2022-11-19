@@ -1,17 +1,40 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <br />
+    <button @click="onAlert">alert</button>
+    <button @click="onConfirm">confirm</button>
+
+    <modals-container />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import { ModalsContainer } from "vue-final-modal";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    ModalsContainer,
+  },
+  methods: {
+    async onAlert() {
+      const result = await this.$alert({
+        title: "야호",
+        message: "뭐라고?",
+        cancelTxt: "끝2",
+      });
+      console.log("onAlert: ", result);
+    },
+    async onConfirm() {
+      const result = await this.$confirm({
+        title: "야호",
+        message: "뭐라고?",
+        confirmTxt: "컨펌",
+        cancelTxt: "끝",
+      });
+      console.log("우와~~", result);
+    },
   },
 };
 </script>
