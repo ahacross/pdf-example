@@ -4,13 +4,14 @@
     <br />
     <button @click="onAlert">alert</button>
     <button @click="onConfirm">confirm</button>
-
+    <button @click="onModal">modal</button>
     <modals-container />
   </div>
 </template>
 
 <script>
 import { ModalsContainer } from "vue-final-modal";
+import VContent from "@/plugins/vfm/VContent";
 
 export default {
   name: "App",
@@ -33,7 +34,12 @@ export default {
         confirmTxt: "컨펌",
         cancelTxt: "끝",
       });
-      console.log("우와~~", result);
+      console.log("onConfirm: ", result);
+    },
+
+    async onModal() {
+      const result = await this.$modal(VContent);
+      console.log("onModal: ", result, 123);
     },
   },
 };
