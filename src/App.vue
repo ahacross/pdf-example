@@ -11,7 +11,7 @@
 
 <script>
 import { ModalsContainer } from "vue-final-modal";
-import VContent from "@/plugins/vfm/VContent";
+import ModalExample from "@/plugins/vfm/ModalExample";
 
 export default {
   name: "App",
@@ -38,7 +38,10 @@ export default {
     },
 
     async onModal() {
-      const result = await this.$modal(VContent);
+      const result = await this.$modal(ModalExample, {
+        title: "오랑우탄 팝업",
+        kakao: 123,
+      });
       console.log("onModal: ", result, 123);
     },
   },

@@ -9,10 +9,6 @@
       <span v-if="params.title" class="modal__title">
         {{ params.title }}
       </span>
-
-      <div class="modal__close" @click="close">
-        <img :src="require('@/assets/close.png')" />
-      </div>
       <div class="modal__content">
         {{ params.message }}
       </div>

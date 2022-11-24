@@ -6,9 +6,9 @@
     v-on="$listeners"
   >
     <template v-slot="{ params }">
-      <div class="modal__close" @click="close">
-        <img :src="require('@/assets/close.png')" />
-      </div>
+      <span v-if="params.title" class="modal__title">
+        {{ params.title }}
+      </span>
       <div class="modal__content">
         <slot :params="params"></slot>
       </div>
