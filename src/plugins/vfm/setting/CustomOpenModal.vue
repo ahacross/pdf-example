@@ -74,7 +74,8 @@ export default {
   color: #333333;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, serif;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -100,9 +101,7 @@ export default {
   width: 18px;
   height: 18px;
 }
-</style>
 
-<style scoped>
 .dark-mode div::v-deep .modal-content {
   border-color: #2d3748;
   background-color: #1a202c;
