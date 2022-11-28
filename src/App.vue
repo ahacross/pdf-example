@@ -18,6 +18,11 @@ export default {
   components: {
     ModalsContainer,
   },
+  data() {
+    return {
+      isTransition: false,
+    };
+  },
   methods: {
     async onAlert() {
       const result = await this.$alert({
@@ -39,7 +44,7 @@ export default {
 
     async onModal() {
       const result = await this.$modal(ModalExample, {
-        title: "오랑우탄 팝업",
+        title: "오랑우탄 팝업2",
         kakao: 123,
       });
       console.log("onModal: ", result, 123);
@@ -56,5 +61,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.vfm-enter-active,
+.vfm-leave-active {
+  transition: opacity 5s;
+}
+.vfm-enter,
+.vfm-leave-to {
+  transition: opacity 2s;
+  opacity: 0;
 }
 </style>

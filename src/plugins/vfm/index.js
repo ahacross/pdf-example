@@ -4,21 +4,21 @@ export default {
   install(Vue) {
     const pop = new Vue();
 
-    Vue.prototype.$alert = (param) => {
+    Vue.prototype.$alert = (param, bind) => {
       return new Promise((resolve) =>
-        pop.$vfm.show(getParams(resolve, param, {}))
+        pop.$vfm.show(getParams(resolve, param, bind))
       );
     };
 
-    Vue.prototype.$confirm = (param) => {
+    Vue.prototype.$confirm = (param, bind) => {
       return new Promise((resolve) =>
-        pop.$vfm.show(getParams(resolve, { isConfirm: true, ...param }, {}))
+        pop.$vfm.show(getParams(resolve, { isConfirm: true, ...param }, bind))
       );
     };
 
-    Vue.prototype.$modal = (component, param) => {
+    Vue.prototype.$modal = (component, param, bind) => {
       return new Promise((resolve) =>
-        pop.$vfm.show(getOpenParams(resolve, component, { ...param }, {}))
+        pop.$vfm.show(getOpenParams(resolve, component, { ...param }, bind))
       );
     };
   },

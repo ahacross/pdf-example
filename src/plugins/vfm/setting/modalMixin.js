@@ -1,4 +1,9 @@
 export default {
+  props: {
+    title: {
+      type: String,
+    },
+  },
   methods: {
     modalConfirm(value) {
       this.$emit("confirm", { close: this.mixinClose, value });

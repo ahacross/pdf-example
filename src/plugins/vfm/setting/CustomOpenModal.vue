@@ -3,6 +3,7 @@
     v-bind="$attrs"
     classes="modal-container"
     content-class="modal-content"
+    transition="bottom"
     v-on="$listeners"
   >
     <template v-slot="{ params }">
@@ -73,8 +74,7 @@ export default {
   color: #333333;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;

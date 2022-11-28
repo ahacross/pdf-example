@@ -24,7 +24,6 @@ export const getParams = (resolve, param, bind) => {
         close();
       },
       closed() {
-        console.log("closed");
         resolve(result);
       },
     },

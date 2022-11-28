@@ -4,6 +4,8 @@ import App from "./App.vue";
 import VfmPlugin from "vue-final-modal";
 import vfm from "./plugins/vfm/";
 
+import "@/assets/main.css";
+
 Vue.config.productionTip = false;
 
 Vue.use(VfmPlugin);
