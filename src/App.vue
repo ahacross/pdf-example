@@ -45,7 +45,8 @@ export default {
     async onModal() {
       const result = await this.$modal(ModalExample, {
         title: "오랑우탄 팝업2",
-        kakao: 123,
+        kakao: "kakao987",
+        buttons: ["저장"],
       });
       console.log("onModal: ", result, 123);
     },

@@ -1,12 +1,14 @@
 import CustomModal from "@/plugins/vfm/setting/CustomModal";
 import CustomOpenModal from "@/plugins/vfm/setting/CustomOpenModal";
 
+function getRandomName(prefix) {
+  return `${prefix}-${Math.random().toString(36).slice(2, 7)}`;
+}
+
 // alert / confirm 용 params
 export const getParams = (resolve, param, bind) => {
   let result = null;
-  const name = `${param.isConfirm ? "confirm" : "alert"}-${Math.random()
-    .toString(36)
-    .slice(2, 7)}`;
+  const name = getRandomName(param.isConfirm ? "confirm" : "alert");
   return {
     component: CustomModal,
     bind: {
@@ -24,7 +26,7 @@ export const getParams = (resolve, param, bind) => {
         close();
       },
       closed() {
-        resolve(result);
+        resolve(!!result);
       },
     },
     params: { ...param },
@@ -35,7 +37,8 @@ export const getParams = (resolve, param, bind) => {
 // component open 용 params
 export const getOpenParams = (resolve, component, param, bind) => {
   let result = null;
-  const name = `modal-${Math.random().toString(36).slice(2, 7)}`;
+  const name = getRandomName("modal");
+  const buttons = [...(param.buttons || []), param.cancelTxt || "닫기"];
   return {
     component: CustomOpenModal,
     bind: {
@@ -44,15 +47,15 @@ export const getOpenParams = (resolve, component, param, bind) => {
     },
     on: {
       // event by custom-modal
-      cancel(close) {
-        result = false;
+      cancel({ close, value }) {
+        result = value;
         close();
       },
       closed() {
-        resolve(result);
+        resolve(result ? result : false);
       },
     },
-    params: { ...param },
+    params: { ...param, buttons },
     opened() {}, // $vfm.show 실행하면 opened에 resolve 되는 함수 있음. 그거 초기화 시키는 용도로 쓰임.
     slots: {
       default: {

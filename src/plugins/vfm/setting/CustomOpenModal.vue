@@ -13,6 +13,16 @@
       <div class="modal__content">
         <slot :params="params"></slot>
       </div>
+      <div class="modal__action">
+        <button
+          v-for="(btn, idx) in params.buttons"
+          :key="idx"
+          style="margin-right: 10px"
+          @click="onClose(params.buttons.length !== idx + 1)"
+        >
+          {{ btn }}
+        </button>
+      </div>
     </template>
   </vue-final-modal>
 </template>
@@ -24,6 +34,12 @@ export default {
   methods: {
     close() {
       this.$emit("input", false);
+    },
+    onClose(value) {
+      if (value) {
+        value = this.$children.at(0).$children.at(0).returnValue;
+      }
+      this.$emit("cancel", { close: this.close, value });
     },
   },
 };
