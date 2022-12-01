@@ -5,6 +5,8 @@
     <button @click="onAlert">alert</button>
     <button @click="onConfirm">confirm</button>
     <button @click="onModal">modal</button>
+    <button @click="onPDFModal">pdf</button>
+
     <modals-container />
   </div>
 </template>
@@ -12,6 +14,7 @@
 <script>
 import { ModalsContainer } from "vue-final-modal";
 import ModalExample from "@/plugins/vfm/ModalExample";
+import PDFIndex from "@/components/pdf/PDFIndex.vue";
 
 export default {
   name: "App",
@@ -48,7 +51,12 @@ export default {
         kakao: "kakao987",
         buttons: ["저장"],
       });
-      console.log("onModal: ", result, 123);
+      console.log("onModal: ", result);
+    },
+
+    async onPDFModal() {
+      const result = await this.$modal(PDFIndex, {});
+      console.log("onModal: ", result);
     },
   },
 };
